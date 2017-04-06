@@ -4,7 +4,7 @@ body {
   background: #fff; }
 
 .center {
-  margin: 80px auto; }
+  margin: 0px auto; }
 
 .so {
   display: block;
@@ -17,7 +17,7 @@ body {
     position: absolute; }
     .so .inner * {
       position: absolute;
-      animation-iteration-count: 10;
+      animation-iteration-count: infinite;
       animation-duration: 3.5s; }
     .so .inner .name {
       position: absolute;
@@ -64,7 +64,6 @@ body {
         width: 71px;
         height: 12px; }
       .so .inner .stack .item {
-        transition: transform 0.3s;
         width: 291px; }
       .so .inner .stack div:nth-child(1) {
         transform: rotate(0deg); }
@@ -116,8 +115,6 @@ body {
     left: 22px; } }
 
 @keyframes stack-item-1 {
-  0% {
-    transform: rotate(12deg * 0); }
   10% {
     transform: rotate(0deg); }
   50% {
@@ -128,8 +125,6 @@ body {
     transform: rotate(12deg * 0); } }
 
 @keyframes stack-item-2 {
-  0% {
-    transform: rotate(12deg * 1); }
   10% {
     transform: rotate(0deg); }
   50% {
@@ -140,8 +135,6 @@ body {
     transform: rotate(12deg * 1); } }
 
 @keyframes stack-item-3 {
-  0% {
-    transform: rotate(12deg * 2); }
   10% {
     transform: rotate(0deg); }
   50% {
@@ -152,8 +145,6 @@ body {
     transform: rotate(12deg * 2); } }
 
 @keyframes stack-item-4 {
-  0% {
-    transform: rotate(12deg * 3); }
   10% {
     transform: rotate(0deg); }
   50% {
@@ -164,8 +155,6 @@ body {
     transform: rotate(12deg * 3); } }
 
 @keyframes stack-item-5 {
-  0% {
-    transform: rotate(12deg * 4); }
   10% {
     transform: rotate(0deg); }
   50% {
@@ -240,3 +229,17 @@ body {
     left: 44px; }
   80% {
     left: 103px; } }
+
+@keyframes stack-box {
+  0% {
+    transform: rotate(0deg); }
+  30% {
+    transform: rotate(0deg); }
+  40% {
+    transform: rotate(135deg); }
+  50% {
+    transform: rotate(135deg); }
+  83% {
+    transform: rotate(360deg); }
+  100% {
+    transform: rotate(360deg); } }

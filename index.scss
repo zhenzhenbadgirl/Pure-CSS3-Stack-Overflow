@@ -21,7 +21,7 @@ body{
 }
 
 .center{
-  margin: 80px auto;    //  整体左右居中
+  margin: 0px auto;    //  整体左右居中
 }
 
 .so{
@@ -37,8 +37,8 @@ body{
 
     *{
       position: absolute;
-      animation-iteration-count: 10;//infinite;      //永远动下去还是动几次就停？
-      animation-duration: 3.5s;
+      animation-iteration-count: infinite;      //直接设置循环次数，数字
+      animation-duration: 3.5s;                      //动画总时间：3.5秒
     }
 
     .name{                                  //右边文字的位置、大小
@@ -109,12 +109,12 @@ body{
       }
 
       .item{
-        transition: transform 0.3s;                     //过渡
-        width: $box-width - 2*$box-size - 2*$stack-padding + 220px;
+        //transition: transform 10s;                     //多余
+        width: $box-width - 2*$box-size - 2*$stack-padding + 220px;     //220px!!!
       }
       
       @for $i from 0 through 4 {
-        div:nth-child(#{$i+1}){                         //1-5的item类的旋转角度，呈扇形展开
+        div:nth-child(#{$i+1}){                         //1-5的item类的旋转角度，动画开始之前，呈扇形摆放
           transform: rotate(#{$i * $stack-arc-rotation}) ;
         }
       }
@@ -122,7 +122,7 @@ body{
   }
 
   .inner{
-    $total-time: 2s;
+    //$total-time: 2s;
 
     .box{                //对应@keyframes box
       animation-name: box;
@@ -155,7 +155,7 @@ body{
         animation-name: stack-items;
       }
       
-      @for $i from 1 through 5 {    //对应@keyframes stack-item-#{$i}5;
+      @for $i from 1 through 5 {    //对应@keyframes stack-item-#{$i}5; 扇形合拢
         .item:nth-child(#{$i}){
           animation-name: stack-item-#{$i};
         }
@@ -166,16 +166,16 @@ body{
   $folded-padding: 30px;
 
   @keyframes stack{                 //缩小成一点的同时左边距离增加，形成缩小到中心点的感觉
-    0%   { left: $box-size + $stack-padding; }
+    0%   { left: $box-size + $stack-padding; }   //给加个边框看起来更清晰
     15%   { left: $box-size + $stack-padding; }
     30%   { left: $box-size + $stack-padding + $folded-padding; }
     50%   { left: $box-size + $stack-padding + $folded-padding; }
     80%   { left: $box-size + $stack-padding; }
   }
 
-  @for $i from 0 through 4 {        //扇形合拢
+  @for $i from 0 through 4 {        //一开始的扇形合拢和最后的展开
     @keyframes stack-item-#{$i+1} {
-      0%   { transform: rotate($stack-arc-rotation * #{$i}); }
+      // 0%   { transform: rotate($stack-arc-rotation * #{$i}); }
       10% { transform: rotate(0deg); }
       50% { transform: rotate(0deg); }
       54% { transform: rotate(0deg); }
@@ -191,7 +191,7 @@ body{
     80%   { width: $stack-width;}
   }
 
-  @keyframes box{                   //灰色的长方形box变成正方形
+  @keyframes box{                   //灰色的长方形box变成正方形的时候距离左边距离增大
     0%   { left: 0; }
     15%   { left: 0; }
     30%   { left: $folded-padding; }
@@ -215,7 +215,7 @@ body{
     50%   { }
   }
 
-  @keyframes box-bottom{              //底部的边长度变化
+  @keyframes box-bottom{              //底部的边长度变化，和顶部类似，也就是灰色盒子的长度
     0%   { width: $box-width; }
     15%   { width: $box-width; }
     30%   { width: $box-size * 2 + $stack-padding * 2 + $stack-height; }
@@ -223,14 +223,14 @@ body{
     80%   { width: $box-width; }
   }
 
-  @keyframes box-right{
+  @keyframes box-right{               //长度变化的同时，调整左边距离，就像两边同时缩到中心一点
     15%   { left: $box-width - $box-size; }
     30%   { left: $box-size * 2 + $stack-padding * 2; }
     50%   { left: $box-size * 2 + $stack-padding * 2;  }
     80%   { left: $box-width - $box-size; }
   }
 
-  @keyframes stack-box{                //动效旋转
+  @keyframes stack-box{                //盒子和条整体的旋转动效
     0%   { transform: rotate(0deg); }
     30%   { transform: rotate(0deg); }
     40%   { transform: rotate(135deg); }
